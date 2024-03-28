@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucky Draw</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f8c471;
+      }
+
+      #app {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      #result-container {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: #e67e22;
+        overflow: hidden;
+        white-space: nowrap;
+        height: 50px;
+        line-height: 50px;
+      }
+
+      #draw-btn {
+        background-color: #e67e22;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #draw-btn:hover {
+        background-color: #d35400;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>What to Eat</h1>
+      <div id="result-container">
+        <span id="result"></span>
+      </div>
+      <button id="draw-btn">Draw</button>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const drawBtn = document.getElementById('draw-btn');
+        const resultContainer = document.getElementById('result');
+        const words = [
+          'Apple',
+          'Banana',
+          'Cherry',
+          'Date',
+          'Elderberry',
+          'Fig',
+          'Grape',
+          'Honeydew',
+        ];
+        let interval;
+        let wordIndex = 0;
+
+        function startSlideAnimation() {
+          clearInterval(interval);
+          interval = setInterval(() => {
+            resultContainer.textContent = words[wordIndex];
+            wordIndex = (wordIndex + 1) % words.length;
+          }, 100);
+        }
+
+        function stopSlideAnimation() {
+          clearInterval(interval);
+        }
+
+        drawBtn.addEventListener('click', function () {
+          startSlideAnimation();
+          setTimeout(() => {
+            stopSlideAnimation();
+            const randomIndex = Math.floor(Math.random() * words.length);
+            const selectedWord = words[randomIndex];
+            resultContainer.textContent = selectedWord;
+          }, 1500); // Adjust this value to control the duration of the slide animation
+        });
+
+        // startSlideAnimation();
+      });
+    </script>
+  </body>
+</html>
