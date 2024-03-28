@@ -31,7 +31,17 @@
         line-height: 50px;
       }
 
-      #draw-btn {
+      #random-text {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: #e67e22;
+        white-space: nowrap;
+        line-height: 25px;
+      }
+
+      #draw-btn,
+      #save-btn {
         background-color: #e67e22;
         color: #fff;
         border: none;
@@ -55,13 +65,18 @@
         <span id="result"></span>
       </div>
       <button id="draw-btn">Draw</button>
+
+      <h2>Fill Some Selection</h2>
+      <textarea id="random-text" name="w3review" rows="10" cols="28"></textarea>
+      <button id="save-btn">Save</button>
     </div>
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const drawBtn = document.getElementById('draw-btn');
+        const saveBtn = document.getElementById('save-btn');
         const resultContainer = document.getElementById('result');
-        const words = [
+        let words = [
           'Apple',
           'Banana',
           'Cherry',
@@ -71,6 +86,11 @@
           'Grape',
           'Honeydew',
         ];
+
+        saveBtn.addEventListener('click', function () {
+          words = document.getElementById('random-text').value.split('\n');
+        });
+
         let interval;
         let wordIndex = 0;
 
