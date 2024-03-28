@@ -27,7 +27,7 @@
         color: #e67e22;
         overflow: hidden;
         white-space: nowrap;
-        height: 50px;
+        height: 60px;
         line-height: 50px;
       }
 
@@ -67,7 +67,13 @@
       <button id="draw-btn">Draw</button>
 
       <h2>Fill Some Selection</h2>
-      <textarea id="random-text" name="w3review" rows="10" cols="28"></textarea>
+      <textarea
+        id="random-text"
+        name="w3review"
+        rows="10"
+        cols="28"
+        placeholder="enter for new selection"
+      ></textarea>
       <button id="save-btn">Save</button>
     </div>
 
@@ -77,18 +83,42 @@
         const saveBtn = document.getElementById('save-btn');
         const resultContainer = document.getElementById('result');
         let words = [
-          'Apple',
-          'Banana',
-          'Cherry',
-          'Date',
-          'Elderberry',
-          'Fig',
-          'Grape',
-          'Honeydew',
+          'Penang Chendul',
+          'Ayam Penyet AP',
+          'Ipoh Vintage',
+          'Aroii Thai',
+          'Kayu Nasi Kandar',
+          'Kakatoo',
+          'Subway',
+          'Food Court',
+          'One Piece',
+          '4 Fingers',
+          'Nyonya Colors',
+          'Shihlin Taiwan',
+          'Taco Bell',
+          'Oldtown',
+          'Dubu Yo',
+          'Kenny Rogers Roasters',
+          'Waroeng Penyet',
+          'Mr Tuk Tuk',
+          'Dodo Korea',
+          'Banana Bistro',
+          'Nandos',
+          'MCD',
+          'KFC',
+          'Salad Atelier',
+          'Homie Recipe',
+          'Ah Cheng Laksa',
+          'Chicken Rice Shop',
+          'Sushi Zanmai',
+          'Peranakan Place',
         ];
 
         saveBtn.addEventListener('click', function () {
-          words = document.getElementById('random-text').value.split('\n');
+          const randomText = document.getElementById('random-text').value;
+          if (randomText) {
+            words = randomText.split('\n');
+          }
         });
 
         let interval;
